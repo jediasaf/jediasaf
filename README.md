@@ -10,9 +10,20 @@ I build the models *and* the tools that put them in front of the people who act 
 
 ### Selected work
 
+**[ask-the-forecast](https://github.com/jediasaf/ask-the-forecast)** — an LLM planning agent that
+answers questions about forecast performance by calling tools over real data, never by recalling or
+computing numbers. Strict tool schemas, structured output with an explicit refusal path, and an eval
+harness that checks mechanically that every cited figure came from an actual tool return.
+
+Measured against a prompt-stuffing baseline across three question sets. On easy questions both reach
+37/37 — stuffing the data into a cached prompt works fine, at 2.2× the cost. On questions needing
+computation over the daily series the architectures separate: **agent 14/14, prompt-stuffing 6/14**,
+because a baseline correctly forbidden from doing arithmetic can only refuse. Tools turned half that
+set from unanswerable into answered.
+
 **[forecasting-portfolio](https://github.com/jediasaf/forecasting-portfolio)** — four dashboards on
 public data, each reporting its own failure modes.
-[**Live →**](https://portfolio-two-zeta-4jh6qlra3g.vercel.app)
+[**Live →**](https://jediasaf.vercel.app)
 
 - *Forecast backtest* — walk-forward on Walmart M5. Prophet 20.52% WAPE. The page also explains why
   the Elastic Net's 5.46% is **not** a fair comparison, and why `HOBBIES_2` fails at 34% on
